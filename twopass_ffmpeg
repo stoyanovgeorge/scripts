@@ -18,7 +18,7 @@ ffmpeg -y -i $infile \
 && ffmpeg -i $infile \
 -c:v libx264 -preset medium -b:v 20M -pass 2 \
 -c:a aac -ac 2 -b:a 192k \
-transcode/${infile%.mxf}.mp4
+${infile%.mxf}.mp4
 
 # shows the stats of the transcoded file 
 
