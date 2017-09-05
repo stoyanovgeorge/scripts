@@ -22,4 +22,7 @@ transcode/${infile%.mxf}.mp4
 
 # shows the stats of the transcoded file 
 
-ffprobe -i transcode/${input_file%.mxf}.mp4
+ffprobe transcode/${input_file%.mxf}.mp4 &> test.log \
+&& grep -i video test.log \
+&& grep -i audio test.log \
+&& rm test.log
