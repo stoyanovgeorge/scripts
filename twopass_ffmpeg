@@ -12,11 +12,11 @@ read infile
 # run the 2-pas encoding for infile and rename the output file from xxx.mxf -> xxx.mp4
 
 ffmpeg -y -i $infile \
--c libx264 -preset medium -b:v 20M -pass 1 \
+-c libx264 -preset medium -b:v 19M -maxrate 20M -bufsize 40M -pass 1 \
 -c:a aac -ac 2 -b:a 192k \
 -f mp4 /dev/null \
 && ffmpeg -i $infile \
--c:v libx264 -preset medium -b:v 20M -pass 2 \
+-c:v libx264 -preset medium -b:v 19M -maxrate 20M -bufsize 40M -pass 2 \
 -c:a aac -ac 2 -b:a 192k \
 ${infile%.mxf}.mp4
 
