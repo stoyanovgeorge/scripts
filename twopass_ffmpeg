@@ -20,6 +20,10 @@ ffmpeg -y -i $infile \
 -c:a aac -ac 2 -b:a 192k \
 ${infile%.mxf}.mp4
 
+# deletes the log files from the 2-pass encoding, you can comment this row to save them
+
+rm ffmpeg2pass-0.log*
+
 # shows the stats of the transcoded file 
 
 echo
