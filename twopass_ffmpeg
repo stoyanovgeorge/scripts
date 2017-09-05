@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# list the content of the home directory
+
+ls -lh /$HOME/
+
+# reads the user input and saves it under $infile variable
+
+echo "Please select the input file [ENTER]: "
+read infile
+
+# run the 2-pas encoding for infile and rename the output file from xxx.mxf -> xxx.mp4
+
+ffmpeg -y -i $infile \
+-c libx264 -preset medium -b:v 20M -pass 1 \
+-c:a aac -ac 2 -b:a 192k \
+-f mp4 /dev/null \
+&& ffmpeg -i $infile \
+-c:v libx264 -preset medium -b:v 20M -pass 2 \
+-c:a aac -ac 2 -b:a 192k \
+transcode/${infile%.mxf}.mp4
+
+# shows the stats of the transcoded file 
+
+ffprobe -i transcode/${input_file%.mxf}.mp4
