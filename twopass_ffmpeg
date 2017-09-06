@@ -9,15 +9,29 @@ ls -lh /$HOME/
 echo "Please select the input file [ENTER]: "
 read infile
 
+
+
+# echo "Please select the video bitrate in M (Mbps) or k (kbps) [ENTER]: "
+# read vbitrate
+
+vbitrate=20M
+
+# echo "Please select the audio bitrate k (kbps) [ENTER]: "
+# read abitrate
+
+$abitrate=192k
+
+$bufsize=40M
+
 # run the 2-pas encoding for infile and rename the output file from xxx.mxf -> xxx.mp4
 
 ffmpeg -y -i $infile \
--c libx264 -preset medium -b:v 19M -maxrate 20M -bufsize 40M -pass 1 \
--c:a aac -ac 2 -b:a 192k \
+-c libx264 -preset medium -b:v $vbitrate -maxrate $vbitrate -bufsize $bufsize -pass 1 \
+-c:a aac -ac 2 -b:a $abitrate \
 -f mp4 /dev/null \
 && ffmpeg -i $infile \
--c:v libx264 -preset medium -b:v 19M -maxrate 20M -bufsize 40M -pass 2 \
--c:a aac -ac 2 -b:a 192k \
+-c:v libx264 -preset medium -b:v $vbitrate -maxrate $vbitrate -bufsize $bufsize -pass 2 \
+-c:a aac -ac 2 -b:a $abitrate \
 ${infile%.mxf}.mp4
 
 # deletes the log files from the 2-pass encoding, you can comment this row to save them
