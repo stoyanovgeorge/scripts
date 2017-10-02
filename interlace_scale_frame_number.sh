@@ -13,3 +13,8 @@ ffmpeg -i $in_file \
         -b:v 50M -minrate:v 50M -maxrate:v 50M -muxrate 65M -bufsize:v 130M \
         -c:a aac -ac 2 -b:a 128k \
         -f mpegts $out_file
+
+ffprobe $out_file &> test.log \
+&& grep -i video test.log \
+&& grep -i audio test.log \
+&& rm test.log
