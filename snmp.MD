@@ -29,3 +29,5 @@ You can check the SNMP OIDs available executing snmpwalk command:
 snmpwalk -v2c -c public 10.153.243.24 transcodeTable
 
 where transcodeTable is a section in the MIB file. This will walk over all elements nested under the transcodeTable, their respective OIDs and their values. 
+
+Please note that "public" is the read-only password and if you want to use snmpset you should use "private" which is the default password.
