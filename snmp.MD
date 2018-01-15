@@ -23,3 +23,9 @@ snmptranslate -IR -On sourceLockStatus.0
 
 Otherwise you can use:
 snmptranslate -m +CISCO-RHINO-MIB -IR -On ciscoLS1010ChassisFanLed
+
+You can check the SNMP OIDs available executing snmpwalk command: 
+
+snmpwalk -v2c -c public 10.153.243.24 transcodeTable
+
+where transcodeTable is a section in the MIB file. This will walk over all elements nested under the transcodeTable, their respective OIDs and their values. 
