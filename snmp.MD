@@ -31,3 +31,5 @@ snmpwalk -v2c -c public 10.153.243.24 transcodeTable
 where transcodeTable is a section in the MIB file. This will walk over all elements nested under the transcodeTable, their respective OIDs and their values. 
 
 Please note that "public" is the read-only password and if you want to use snmpset you should use "private" which is the default password.
+
+For SNMP Traps you can refer to the following guide: http://insertscream.blogspot.de/2013/01/snmptraps.html and also https://linux-tips.com/t/how-can-i-disable-snmpd-ia-addr-insert-messages/281
