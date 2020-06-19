@@ -5,3 +5,4 @@ A collection of useful linux scripts, which would make your life easier.
 * tstools.sh - a compilation script for building and installing the tstools for Debian based machines
 * opencaster.sh - a compilation and installation script for Debian based distribution of [Opencaster](http://www.avalpa.com/the-key-values/15-free-software/33-opencaster "Opencaster Official Webpage")
 * twopass_ffmpeg.sh - a script for 2-pass encoding of input mxf file which creates an output mp4 file
+* toggle_touchpad.sh - a script to enable the touchpad in case it is disabled and disable if it is enabled. You can automate this with bindsym in `i3wm` by adding something like" 
