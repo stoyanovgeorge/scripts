@@ -19,5 +19,6 @@ echo "Press Control + C if you want to stop your capture"
 
 # Change the loglevel if you want to change the verbosity of FFMPEG
 # You can add -stats to see the encoding stats
-ffmpeg -hide_banner -loglevel error -video_size "$SCREEN_RESOLUTION" -re \
-    -f x11grab -i :0.0+0,0 -preset ultrafast -pix_fmt yuv420p "$CAPTURE_FILE"
+ffmpeg -hide_banner -loglevel warning -re -fflags nobuffer -flags low_delay \
+    -probesize 200M -video_size "$SCREEN_RESOLUTION" -f x11grab -i :0.0+0,0 \
+    -preset ultrafast -pix_fmt yuv420p "$CAPTURE_FILE"
